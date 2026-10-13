@@ -66,7 +66,7 @@ Corra `npm run db:reset` antes de `test:db` si ya usó la base a mano.
 5. Cree el primer administrador desde el panel de Supabase. Asígnele el rol con `insert into user_role_assignments (user_id, role) values ('<id>', 'admin')`.
 6. Cargue la cartera y las facturas desde Oracle (ver Integración con Oracle). Luego asigne en Administración los beneficiarios que queden sin marca: sus facturas no aparecen en la cuenta de ninguna marca y el cuadre las lista.
 7. Compile con `npm run build` usando `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` del proyecto hospedado. El `dist/` local apunta a `127.0.0.1` y no sirve para publicar.
-8. Publique `dist/` con las cabeceras de `public/_headers` (CSP, HSTS, `frame-ancestors 'none'`, `Referrer-Policy: no-referrer`). Netlify y Cloudflare Pages las leen solas. En otro hosting, IT debe replicarlas.
+8. Publique en Vercel conectando el repositorio. `vercel.json` ya trae la compilación, la regla para que las rutas de la app no den 404 y las cabeceras de seguridad (CSP con el proyecto de Supabase, HSTS, `frame-ancestors 'none'`, `Referrer-Policy: no-referrer`). Defina en Vercel `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`. Si cambia el proyecto de Supabase, actualice la CSP de `vercel.json`. Para Netlify o Cloudflare Pages está `public/_headers`.
 9. Programe el respaldo diario (sección Respaldos) y haga una restauración de prueba antes de abrir a las marcas.
 
 ## Respaldos
