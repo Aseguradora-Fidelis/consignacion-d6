@@ -1,0 +1,10 @@
+# Cabeceras de seguridad para el hosting (formato de Netlify y Cloudflare Pages).
+# Si IT publica en otro servicio, debe replicar estas mismas cabeceras.
+# Reemplace <proyecto> por el identificador del proyecto de Supabase.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://<proyecto>.supabase.co; connect-src 'self' https://<proyecto>.supabase.co wss://<proyecto>.supabase.co; frame-src https://<proyecto>.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Permissions-Policy: camera=(self), microphone=(), geolocation=()

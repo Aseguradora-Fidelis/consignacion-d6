@@ -1,0 +1,73 @@
+/*
+ * Sistema visual Fidelis para la app D-6.
+ * Fuente: LIBRO DE MARCA FIDELIS 2026 (p. 33-36) y AI MEMORY/taste.md.
+ *   Verde institucional #CCDD00: acento, nunca fondo detras de texto.
+ *   Negro: color estructural. Blanco: fondo.
+ *   Grises neutros anclados en #707070 y #CCCCCC (sin tinte azul).
+ *   Poppins para titulos, Roboto para texto (decision del 24-09-2026).
+ *   Estados con borde fino del color del estado, sin relleno.
+ */
+:root {
+  --verde: #ccdd00;
+  --verde-hover: #bccc00;
+  --verde-oscuro: #6b7700;   /* barras y bordes de graficos: contraste 4.6:1 sobre blanco */
+  --verde-50: #fafce8;
+  --verde-100: #f3f7c9;
+  --verde-200: #e6ee94;
+  --negro: #000000;
+  --blanco: #ffffff;
+
+  --gris-50: #fafafa;
+  --gris-100: #f4f4f4;
+  --gris-150: #ececec;
+  --gris-200: #e0e0e0;
+  --gris-300: #cccccc;
+  --gris-500: #8a8a8a;
+  --gris-600: #707070;
+  --gris-700: #4a4a4a;
+  --gris-900: #1a1a1a;
+
+  --texto: #111111;
+  --texto-2: #4a4a4a;
+  --texto-3: #6b6b6b;
+  --borde: #e0e0e0;
+  --borde-fuerte: #8a8a8a;   /* borde de campos: 3.4:1 sobre blanco (WCAG 1.4.11) */
+  --fondo: #ffffff;
+  --fondo-suave: #f7f7f7;
+  /* Modo claro: blanco de fondo, negro para estructura y seleccion, verde de acento. */
+  --fondo-app: #ffffff;
+  --superficie: #ffffff;
+  --superficie-borde: #e6e6e6;
+  --menu: #ffffff;
+  --menu-hover: var(--verde-50);
+  --menu-activo: var(--negro);
+  --menu-texto: #1a1a1a;
+  --menu-grupo: #6b6b6b;
+
+  /* Estados: solo borde y texto. Contraste AA sobre blanco. */
+  --ok: #4f5e00;
+  --atencion: #8a5300;
+  --critico: #b3261e;
+  --neutro: #5e5e5e;
+
+  --fuente-titulo: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+  --fuente: 'Roboto', 'Segoe UI', system-ui, sans-serif;
+
+  --t-xs: 0.8125rem;   /* 13 px */
+  --t-sm: 0.875rem;    /* 14 px */
+  --t-md: 1rem;        /* 16 px */
+  --t-lg: 1.125rem;    /* 18 px */
+  --t-xl: 1.5rem;      /* 24 px */
+  --t-2xl: 2rem;       /* 32 px */
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+
+  --sombra: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --sombra-suave: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --sombra-modal: 0 24px 64px rgba(0, 0, 0, 0.24);
+
+  --ancho-sidebar: 248px;
+  --alto-topbar: 64px;
+}
