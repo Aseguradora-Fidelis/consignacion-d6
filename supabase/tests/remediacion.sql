@@ -15,7 +15,7 @@ RETURNS VOID LANGUAGE plpgsql AS $$
 BEGIN
   PERFORM set_config('role', 'anon', true);
   PERFORM set_config('request.jwt.claims', '{"role":"anon"}', true);
-  PERFORM set_config('request.headers', '{"user-agent":"Prueba/1.0","x-forwarded-for":"203.0.113.7, 10.0.0.1"}', true);
+  PERFORM set_config('request.headers', '{"user-agent":"Prueba/1.0","cf-connecting-ip":"203.0.113.7","x-forwarded-for":"6.6.6.6, 10.0.0.1"}', true);
 END;
 $$;
 CREATE OR REPLACE FUNCTION pg_temp.ok(p_cond BOOLEAN, p_msg TEXT)

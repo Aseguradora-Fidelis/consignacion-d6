@@ -18,6 +18,16 @@ function cabeceras(request: Request) {
   };
 }
 
+// Supabase entrega las llaves nuevas como JSON: {"default": "sb_..."}.
+function llave(nombre: string) {
+  try {
+    const valor = JSON.parse(Deno.env.get(nombre) ?? '{}');
+    return typeof valor?.default === 'string' ? valor.default : '';
+  } catch {
+    return '';
+  }
+}
+
 function respuesta(request: Request, cuerpo: unknown, status = 200) {
   return Response.json(cuerpo, { status, headers: cabeceras(request) });
 }
@@ -38,8 +48,9 @@ async function atender(request: Request) {
   if (request.method !== 'POST') return respuesta(request, { error: 'Método no permitido' }, 405);
 
   const url = Deno.env.get('SUPABASE_URL') ?? '';
-  const anon = Deno.env.get('SUPABASE_ANON_KEY') ?? '';
-  const servicio = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '';
+  // Llaves nuevas de Supabase (sb_publishable_ y sb_secret_), con respaldo en las antiguas.
+  const anon = llave('SUPABASE_PUBLISHABLE_KEYS') || (Deno.env.get('SUPABASE_ANON_KEY') ?? '');
+  const servicio = llave('SUPABASE_SECRET_KEYS') || (Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '');
 
   const quien = createClient(url, anon, { global: { headers: { Authorization: request.headers.get('Authorization') ?? '' } } });
   const { data: sesion } = await quien.auth.getUser();

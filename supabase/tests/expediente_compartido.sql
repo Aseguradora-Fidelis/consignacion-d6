@@ -62,7 +62,7 @@ RESET role;
 -- 3. El distribuidor envia sin la carta de la marca: queda como faltante hasta que llega
 UPDATE public.documentos SET carga_pendiente = true WHERE id = (SELECT valor::uuid FROM ctx WHERE clave = 'carga');
 INSERT INTO public.documentos (solicitud_alta_id, categoria, nombre_archivo, file_path, origen, carga_pendiente, requerido)
-SELECT (SELECT valor::uuid FROM ctx WHERE clave = 'sol'), r.categoria, 'doc.pdf', 'altas/prueba/' || r.categoria || '.pdf', 'AFIANZADO', false, true
+SELECT (SELECT valor::uuid FROM ctx WHERE clave = 'sol'), r.categoria, 'doc.pdf', 'altas/' || (SELECT valor FROM ctx WHERE clave = 'sol') || '/' || r.categoria || '.pdf', 'AFIANZADO', false, true
 FROM public.ive_requisitos_d6 r
 WHERE r.activo AND r.tipo_persona = 'INDIVIDUAL' AND r.obligatorio AND r.responsable = 'AFIANZADO'
   AND r.categoria NOT IN ('IVE_ASS_01', 'IVE_ASS_02') AND NOT r.requiere_umbral_exposicion;

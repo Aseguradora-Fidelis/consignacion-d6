@@ -417,5 +417,7 @@ enabled = true
 # JSON string passed through to pg-delta SQL formatting.
 # format_options = "{\"keywordCase\":\"upper\",\"indent\":2,\"maxWidth\":80,\"commaStyle\":\"trailing\"}"
 
+# La funcion valida la sesion por su cuenta (auth.getUser y has_d6_role admin). El chequeo del
+# gateway solo entiende JWT firmados con el secreto antiguo, y el proyecto ya firma con ES256.
 [functions.admin-usuarios]
-verify_jwt = true
+verify_jwt = false

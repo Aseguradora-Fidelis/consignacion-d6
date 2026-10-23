@@ -61,7 +61,10 @@ class Supabase:
         self.key = env("SUPABASE_SERVICE_ROLE_KEY")
 
     def request(self, method: str, path: str, payload=None, prefer=None):
-        headers = {"apikey": self.key, "Authorization": f"Bearer {self.key}", "Content-Type": "application/json"}
+        headers = {"apikey": self.key, "Content-Type": "application/json"}
+        # La llave nueva (sb_secret_) va solo en apikey. La antigua era un JWT y tambien iba como Bearer.
+        if self.key.startswith("eyJ"):
+            headers["Authorization"] = f"Bearer {self.key}"
         if prefer:
             headers["Prefer"] = prefer
         body = json.dumps(payload, default=json_default).encode() if payload is not None else None
